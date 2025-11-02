@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management - Student Portal</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Navigation will be loaded here -->
+        <div id="navigation-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Course Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddCourseModal()">
+                        <i class="icon-plus"></i> Add New Course
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Courses</h3>
+                        <div class="search-filter">
+                            <input type="search" id="courseSearch" placeholder="Search courses...">
+                            <select id="departmentFilter">
+                                <option value="">All Departments</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="coursesTable">
+                            <!-- Courses table will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add Course Modal -->
+        <div id="addCourseModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Course</h3>
+                    <button class="modal-close" onclick="hideAddCourseModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="addCourseForm">
+                        <!-- Form fields will be loaded dynamically -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/supabase-integration.js"></script>
+    <script src="../assets/js/frontend-integration.js"></script>
+    <script>
+        // Initialize course management module
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.StudentPortalIntegration) {
+                window.StudentPortalIntegration.initializeModule('courses');
+            }
+        });
+
+        function showAddCourseModal() {
+            document.getElementById('addCourseModal').style.display = 'block';
+        }
+
+        function hideAddCourseModal() {
+            document.getElementById('addCourseModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

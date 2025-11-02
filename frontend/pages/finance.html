@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance - Student Portal</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Navigation will be loaded here -->
+        <div id="navigation-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Financial Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showPaymentModal()">
+                        <i class="icon-plus"></i> Record Payment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Fee Payments</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="paymentsTable">
+                                <!-- Payments will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Outstanding Fees</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="outstandingTable">
+                                <!-- Outstanding fees will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Financial Reports</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportsSection">
+                                <!-- Financial reports will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Payment Modal -->
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Record Payment</h3>
+                    <button class="modal-close" onclick="hidePaymentModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <!-- Payment form will be loaded dynamically -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/supabase-integration.js"></script>
+    <script src="../assets/js/frontend-integration.js"></script>
+    <script>
+        // Initialize finance module
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.StudentPortalIntegration) {
+                window.StudentPortalIntegration.initializeModule('finance');
+            }
+        });
+
+        function showPaymentModal() {
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function hidePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

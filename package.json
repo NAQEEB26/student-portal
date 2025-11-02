@@ -1,0 +1,100 @@
+{
+  "name": "student-portal-backend",
+  "version": "1.0.0",
+  "description": "Complete Supabase backend for Student Portal Management System",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node scripts/deploy-supabase.cjs",
+    "test": "node scripts/comprehensive-test-suite.cjs",
+    "test-simple": "node scripts/simple-test-runner.cjs",
+    "validate-production": "node scripts/production-validator.cjs",
+    "test:watch": "nodemon scripts/comprehensive-test-suite.cjs",
+    "dev": "nodemon --watch frontend --ext js,html,css --exec \"echo Backend is ready for development\"",
+    "build": "npm run deploy && npm run test",
+    "start": "npm run deploy",
+    "deploy-vercel": "vercel --prod",
+    "deploy-preview": "vercel",
+    "deploy-setup": "node scripts/deploy-vercel.cjs",
+    "vercel-build": "echo 'Static site - no build required'",
+    "lint": "eslint scripts/ --ext .js",
+    "format": "prettier --write scripts/",
+    "validate": "npm run lint && npm run test",
+    "setup": "npm install && npm run deploy && npm run test",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:reset": "supabase db reset",
+    "supabase:migrations": "supabase db diff --use-migra",
+    "supabase:functions:deploy": "supabase functions deploy",
+    "supabase:functions:serve": "supabase functions serve",
+    "backup": "node scripts/backup-database.js",
+    "restore": "node scripts/restore-database.js",
+    "monitor": "node scripts/monitor-system.js",
+    "load-test": "node scripts/load-test.js"
+  },
+  "keywords": [
+    "student-portal",
+    "education-management",
+    "supabase",
+    "backend",
+    "university",
+    "college",
+    "student-management",
+    "faculty-management",
+    "course-management"
+  ],
+  "author": "Student Portal Development Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "nodemailer": "^6.9.7",
+    "uuid": "^9.0.1",
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.11",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.1.1",
+    "moment": "^2.29.4",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "supabase": "^1.113.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/student-portal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/student-portal/issues"
+  },
+  "homepage": "https://github.com/your-org/student-portal#readme",
+  "config": {
+    "supabase": {
+      "url": "https://pamkllweipcafpylvsdf.supabase.co",
+      "project_id": "pamkllweipcafpylvsdf"
+    }
+  },
+  "files": [
+    "scripts/",
+    "supabase/",
+    "frontend/",
+    "docs/",
+    "README.md",
+    "API_DOCUMENTATION.md",
+    "SUPABASE_SETUP.md"
+  ]
+}

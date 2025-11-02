@@ -1,0 +1,10 @@
+Project name =" Student Portal"
+project id = "pamkllweipcafpylvsdf"
+project url = "https://pamkllweipcafpylvsdf.supabase.co"
+
+anon key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA"
+
+secret key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg"
+
+
+jwt secret key ="CL1KyRI0umGkyFmoE6+23DbY7h89JuRS6tHFasjaiQMI02J1M01/7tzMhU4Z4WlWQWd6NSgs3Z8PMntlKe91hw=="

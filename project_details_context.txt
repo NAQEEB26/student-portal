@@ -1,0 +1,233 @@
+Student Portal — Complete Documentation 
+(Firebase & Supabase) 
+1. Project Overview 
+Yeh Student Portal aik web application hai jismein admins aur campus managers students ko 
+add/edit/delete kar sakte hain, courses aur campuses manage kar sakte hain, students ka dashboard 
+hota hai, ID-card generate/download kar sakte hain, aur powerful filtering/search features available 
+honge. Application dono backends ke saath kaam karne ki flexibility rakhegi: Firebase (Firestore + 
+Auth + Storage) aur Supabase (Postgres + Auth + Storage). User ya admin setup ke doran 
+backend choose kar sakta hai. 
+2. Goals / Objectives 
+ Multiple campuses ka support 
+ Student-level RBAC (Admin, CampusManager, Student) 
+ Student dashboard with profile, courses, attendance summary 
+ ID Card generate (PDF) and download 
+ CRUD for Students, Courses, Campuses 
+ Filter / Search / Sort students 
+ Backend-agnostic design: Firebase ya Supabase dono choose kar sakte ho 
+3. Users & Roles 
+1. Super Admin 
+o Full access: sab kuch add/edit/delete kar sakta hai 
+o Campus managers assign karna 
+2. Campus Manager 
+o Sirf apne campus ke students aur courses manage kar sakta hai 
+o Student add/edit/delete, course assign karna 
+3. Student 
+o Apna profile dekh sakta hai, course enroll kar sakta hai (agar allowed ho) 
+o ID card download kar sakta hai 
+4. High-Level Features 
+ Authentication (Email/Password, Social optional) 
+ Student Registration (manual by admin / self-registration with approval) 
+ Student Dashboard (profile, enrolled courses, attendance summary) 
+ Course Management (add/edit/delete) 
+ Campus Management (add/edit/delete) 
+ Search / Filter / Sort students by name, id, course, campus, batch, status 
+ ID Card: dynamic generation (PDF) with student photo and QR code 
+ Export: CSV/Excel of filtered students 
+ Audit logs/basic activity history 
+5. Pages / UI Screens 
+1. Landing / Login / Register 
+2. Admin Dashboard (overview metrics: total students, courses, campuses) 
+3. Campus Manager Dashboard (campus-specific metrics) 
+4. Students List Page (filter, search, bulk actions) 
+5. Student Detail / Profile Page (view/edit, generate ID) 
+6. Add/Edit Student Modal / Form 
+7. Courses Page (list, add/edit/delete) 
+8. Campuses Page (list, add/edit/delete) 
+9. Settings / Roles 
+10. Reports / Export 
+6. Functional Requirements (Short) 
+ FR1: Admin can create/read/update/delete students 
+ FR2: CampusManager can manage only their campus records 
+ FR3: Student can view their own dashboard and download ID 
+ FR4: System supports switching backend between Firebase and Supabase 
+ FR5: ID card generated in PDF with QR that links to student public profile 
+ FR6: Filter results can be exported to CSV 
+7. Non-Functional Requirements 
+ Responsive UI (Bootstrap/Tailwind) 
+ Secure authentication and RBAC 
+ Fast queries for listing/filtering (indexes) 
+ Data validation both client & server-side 
+ Audit logging for critical actions 
+8. Database Design (Two options) 
+A. Firestore (Firebase) 
+Collection design (recommended): 
+ users (for auth profile or use Firebase Auth + userProfiles collection) 
+o uid (from Auth) 
+o name 
+o email 
+o role (superadmin | campus_manager | student) 
+o campusId (if applicable) 
+o createdAt 
+ students 
+o id (auto) 
+o uid (optional, links to auth user) 
+o studentId (custom readable ID, e.g. STU2025-001) 
+o name 
+o fatherName 
+o dob 
+o gender 
+o phone 
+o email 
+o photoUrl (storage) 
+o campusId 
+o courses: [ { courseId, enrolledAt, status } ] 
+o batch 
+o address 
+o status (active | inactive) 
+o createdAt, updatedAt 
+ courses 
+o id 
+o name 
+o code 
+o duration 
+o fee 
+o campusIds: [] (which campuses offer) 
+ campuses 
+o id 
+o name 
+o location 
+o managerUid 
+ attendance (optional) 
+o id 
+o studentId 
+o date 
+o status (present/absent) 
+Notes (Firestore): use composite indexes for filtering (e.g., campusId + courseId + status). Keep 
+documents reasonably small. 
+B. Supabase (Postgres) 
+Suggested schema (simplified): 
+ users (auth handled by Supabase Auth; link to users table) 
+o id (uuid) 
+o email 
+o name 
+o role 
+o campus_id 
+o created_at 
+ students 
+o id (uuid) 
+o student_id (text, e.g. STU2025-001) 
+o name 
+o father_name 
+o dob (date) 
+o gender 
+o phone 
+o email 
+o photo_url 
+o campus_id (fk) 
+o batch 
+o status 
+o created_at, updated_at 
+ courses 
+o id (uuid) 
+o name 
+o code 
+o duration 
+o fee 
+ student_courses (join table) 
+o id 
+o student_id (fk) 
+o course_id (fk) 
+o enrolled_at 
+o status 
+ campuses 
+o id (uuid) 
+o name 
+o location 
+o manager_id 
+ attendance 
+o id 
+o student_id 
+o date 
+o status 
+Notes (Supabase/Postgres): create indexes on campus_id, course_id, student_id and use pg_trgm or 
+full-text search for name search. 
+9. Authentication & Authorization 
+Firebase 
+ Use Firebase Auth (Email/password). Store roles in a users collection or in custom claims (for 
+server trust). For role-based access use Firebase Security Rules or Cloud Functions to set 
+custom claims. 
+Supabase 
+ Use Supabase Auth for registration/login. Store role and campus_id in a separate users table. 
+Use Row Level Security (RLS) policies to restrict access: campus managers can only CRUD 
+records where campus_id = their campus. 
+10. Security Rules / Policies (Examples) 
+Firestore rules (high level) 
+ Only authenticated users read/write. 
+ Admins can access all documents. 
+ Campus managers can read/write students where resource.data.campusId == 
+request.auth.uid_campusId (or compare to manager's assigned campus). 
+Supabase RLS rules (concept) 
+ Enable RLS on students table. 
+ Policy for campus managers: allow select, update, delete where auth.role = 'campus_manager' AND 
+campus_id = auth.campus_id. 
+ Students can select their own record only. 
+11. APIs / Client Operations (frontend responsibilities) 
+Common client operations (works for both backends): 
+ GET /students?campus=...&course=...&search=...&status=...&page=... — list with filters and pagination 
+ POST /students — create student 
+ PUT /students/:id — update 
+ DELETE /students/:id — delete 
+ GET /students/:id — student detail 
+ POST /students/:id/generate-id — return signed URL or base64 PDF 
+Implementation notes: 
+ For Firebase: implement queries using Firestore SDK with limit/offset or use cursor-based 
+pagination. 
+ For Supabase: use select() with filters and limit/offset, or create server endpoint that returns 
+paged results. 
+12. ID Card Generation (PDF) 
+Flow: 
+1. User clicks "Generate ID" on student profile. 
+2. Frontend fetches student data and photo. 
+3. Frontend or backend generates a PDF containing: student photo, name, student id, course(s), 
+campus name, validity, QR code (links to public profile). 
+13. Filtering & Search 
+Filters to implement: 
+ Campus 
+ Course 
+ Batch/Year 
+ Enrollment status 
+ Date range (createdAt) 
+ Text search (name, studentId) 
+Implementation tips: 
+ For Firestore: combine filters carefully; create composite indexes in console for common filter 
+combos. 
+ For Supabase: use SQL queries with WHERE clauses and ILIKE for case-insensitive search. 
+Add full-text search for better performance. 
+14. UI/UX Suggestions 
+ Use a clear table for students with columns: Photo, StudentID, Name, Campus, Courses 
+(count), Batch, Status, Actions 
+ Each row action: View, Edit, Delete, Generate ID 
+ Filters on the top, with a simple collapse on small screens 
+ Use modals for Add/Edit forms 
+ Provide confirmation for delete actions 
+ Provide bulk actions (export, delete) for selected rows 
+15. Sample Workflows 
+A. Add Student (Admin) 
+1. Admin -> Students -> Add Student 
+2. Fill form (including campus selection) 
+3. Save -> student document inserted in DB -> upload photo to Storage 
+4. Optionally send welcome email (via Cloud Function or server) 
+B. Campus Manager Deletes Student 
+1. Campus manager navigates to Students filtered by their campus 
+2. Click delete on a student 
+3. System checks policy (manager's campus matches student's campus) 
+4. Delete student record and related storage (photo) and log the action 
+16. Deployment & Hosting 
+ Frontend: Host on Vercel / Netlify / Firebase Hosting 
+ Firebase Backend: Firestore + Auth + Storage; Cloud Functions for server tasks (PDF 
+generation, email) 
+ Supabase Backend: Supabase (DB + Auth + Storage); Edge Functions for server tasks if 
+needed 
+CI/CD: 
+ Use GitHub Actions to deploy frontend and run tests 

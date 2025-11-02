@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management - Student Portal</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Navigation will be loaded here -->
+        <div id="navigation-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Student Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddStudentModal()">
+                        <i class="icon-plus"></i> Add New Student
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Students</h3>
+                        <div class="search-filter">
+                            <input type="search" id="studentSearch" placeholder="Search students...">
+                            <select id="programFilter">
+                                <option value="">All Programs</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="studentsTable">
+                            <!-- Students table will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add Student Modal -->
+        <div id="addStudentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Student</h3>
+                    <button class="modal-close" onclick="hideAddStudentModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="addStudentForm">
+                        <!-- Form fields will be loaded dynamically -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/supabase-integration.js"></script>
+    <script src="../assets/js/frontend-integration.js"></script>
+    <script>
+        // Initialize student management module
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.StudentPortalIntegration) {
+                window.StudentPortalIntegration.initializeModule('students');
+            }
+        });
+
+        function showAddStudentModal() {
+            document.getElementById('addStudentModal').style.display = 'block';
+        }
+
+        function hideAddStudentModal() {
+            document.getElementById('addStudentModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

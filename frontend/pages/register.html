@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Portal</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <div class="auth-card">
+                <!-- Header -->
+                <div class="auth-header">
+                    <div class="mb-3">
+                        <i class="fas fa-user-plus fa-2x"></i>
+                    </div>
+                    <h1>Create Account</h1>
+                    <p>Join the Student Portal community</p>
+                </div>
+
+                <!-- Body -->
+                <div class="auth-body">
+                    <!-- Backend Selection -->
+                    <div class="backend-selection">
+                        <h6><i class="fas fa-database me-2"></i>Choose Backend</h6>
+                        <div class="backend-options">
+                            <div class="backend-option">
+                                <input type="radio" id="firebase-reg" name="backend" value="firebase" checked>
+                                <label for="firebase-reg">
+                                    <i class="fab fa-google me-1"></i>
+                                    Firebase
+                                </label>
+                            </div>
+                            <div class="backend-option">
+                                <input type="radio" id="supabase-reg" name="backend" value="supabase">
+                                <label for="supabase-reg">
+                                    <i class="fas fa-database me-1"></i>
+                                    Supabase
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form id="registerForm" class="auth-form" novalidate>
+                        <!-- Role Selection -->
+                        <div class="role-selection">
+                            <h6 class="mb-3"><i class="fas fa-users me-2"></i>Select Your Role</h6>
+
+                            <div class="role-option">
+                                <input type="radio" id="role-student" name="role" value="student" checked>
+                                <label for="role-student">
+                                    <div class="role-icon">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div class="role-info">
+                                        <h6>Student</h6>
+                                        <p>Access your profile, courses, and download ID card</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="role-option">
+                                <input type="radio" id="role-campus-manager" name="role" value="campus_manager">
+                                <label for="role-campus-manager">
+                                    <div class="role-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="role-info">
+                                        <h6>Campus Manager</h6>
+                                        <p>Manage students and courses for your campus</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="role-option">
+                                <input type="radio" id="role-admin" name="role" value="superadmin">
+                                <label for="role-admin">
+                                    <div class="role-icon">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
+                                    <div class="role-info">
+                                        <h6>Super Admin</h6>
+                                        <p>Full access to all system features</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Campus Selection (for Campus Manager) -->
+                        <div class="campus-selection" id="campusSelection">
+                            <div class="form-group">
+                                <label for="campus" class="form-label">
+                                    <i class="fas fa-building"></i>
+                                    Select Campus
+                                </label>
+                                <select class="form-control" id="campus" name="campus">
+                                    <option value="">Choose a campus...</option>
+                                    <option value="main-campus">Main Campus</option>
+                                    <option value="north-campus">North Campus</option>
+                                    <option value="south-campus">South Campus</option>
+                                    <option value="east-campus">East Campus</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">
+                                        <i class="fas fa-user"></i>
+                                        First Name
+                                    </label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName"
+                                        placeholder="Enter first name" required autocomplete="given-name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">
+                                        <i class="fas fa-user"></i>
+                                        Last Name
+                                    </label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                        placeholder="Enter last name" required autocomplete="family-name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                    placeholder="Enter your phone number" required autocomplete="tel">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                <i class="fas fa-lock"></i>
+                                Password
+                            </label>
+                            <div class="input-group position-relative">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Create a strong password" required autocomplete="new-password"
+                                    minlength="6">
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small class="text-muted">Password must be at least 6 characters long</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">
+                                <i class="fas fa-lock"></i>
+                                Confirm Password
+                            </label>
+                            <div class="input-group position-relative">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirm your password" required autocomplete="new-password">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('confirmPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-group">
+                            <div class="remember-me">
+                                <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                                <label for="acceptTerms">
+                                    I agree to the
+                                    <a href="#" class="text-decoration-none">Terms of Service</a>
+                                    and
+                                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="auth-btn auth-btn-primary">
+                            <i class="fas fa-user-plus me-2"></i>
+                            Create Account
+                        </button>
+                    </form>
+
+                    <!-- Auth Links -->
+                    <div class="auth-links">
+                        <p class="mb-2">Already have an account?</p>
+                        <a href="login.html" class="fw-bold">
+                            <i class="fas fa-sign-in-alt me-1"></i>
+                            Sign In Here
+                        </a>
+                        <hr class="my-3">
+                        <a href="../index.html" class="text-muted">
+                            <i class="fas fa-home me-1"></i>
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/auth.js"></script>
+
+    <script>
+        // Initialize registration page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if already logged in
+            if (Auth.isLoggedIn()) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Handle backend selection
+            const backendRadios = document.querySelectorAll('input[name="backend"]');
+            backendRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    StudentPortal.config.backend = e.target.value;
+                    Storage.set('selectedBackend', e.target.value);
+                    Utils.showToast(`Switched to ${e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)} backend`, 'info');
+                });
+            });
+
+            // Handle role selection
+            const roleRadios = document.querySelectorAll('input[name="role"]');
+            const campusSelection = document.getElementById('campusSelection');
+
+            roleRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'campus_manager') {
+                        campusSelection.classList.add('show');
+                        document.getElementById('campus').required = true;
+                    } else {
+                        campusSelection.classList.remove('show');
+                        document.getElementById('campus').required = false;
+                        document.getElementById('campus').value = '';
+                    }
+                });
+            });
+
+            // Load saved backend preference
+            const savedBackend = Storage.get('selectedBackend', 'firebase');
+            document.querySelector(`input[name="backend"][value="${savedBackend}"]`).checked = true;
+            StudentPortal.config.backend = savedBackend;
+
+            // Password confirmation validation
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirmPassword');
+
+            function validatePasswordMatch() {
+                if (confirmPasswordField.value && passwordField.value !== confirmPasswordField.value) {
+                    confirmPasswordField.setCustomValidity('Passwords do not match');
+                } else {
+                    confirmPasswordField.setCustomValidity('');
+                }
+            }
+
+            passwordField.addEventListener('input', validatePasswordMatch);
+            confirmPasswordField.addEventListener('input', validatePasswordMatch);
+        });
+
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.parentNode.querySelector('.password-toggle i');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+    </script>
+</body>
+
+</html>

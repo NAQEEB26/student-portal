@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Student Portal</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Navigation will be loaded here -->
+        <div id="navigation-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>System Administration</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAdminModal()">
+                        <i class="icon-settings"></i> System Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>User Management</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="usersTable">
+                                <!-- Users will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>System Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="settingsSection">
+                                <!-- Settings will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Audit Logs</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="auditTable">
+                                <!-- Audit logs will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Admin Modal -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>System Administration</h3>
+                    <button class="modal-close" onclick="hideAdminModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="adminContent">
+                        <!-- Admin content will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/supabase-integration.js"></script>
+    <script src="../assets/js/frontend-integration.js"></script>
+    <script>
+        // Initialize administration module
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.StudentPortalIntegration) {
+                window.StudentPortalIntegration.initializeModule('administration');
+            }
+        });
+
+        function showAdminModal() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        function hideAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

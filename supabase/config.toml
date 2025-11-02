@@ -1,0 +1,155 @@
+# =============================================
+# SUPABASE PROJECT CONFIGURATION
+# =============================================
+
+# Project Details
+project_id = "student-portal-2024"
+name = "Student Portal"
+db_password = "your-secure-database-password"
+
+# Database Configuration
+[database]
+host = "localhost"
+port = 5432
+user = "postgres"
+password = "postgres"
+database = "postgres"
+
+# Authentication Configuration
+[auth]
+# Enable email confirmations for new signups
+enable_email_confirmations = true
+# Disable signups if you want admin-only user creation
+enable_signups = true
+# JWT expiry in seconds (24 hours)
+jwt_expiry = 86400
+# Password requirements
+password_min_length = 8
+# Additional providers (configure as needed)
+# external_providers = ["google", "github"]
+
+# Email Configuration
+[auth.email]
+# Enable email-based authentication
+enable_email_confirmations = true
+# Email templates directory
+template_dir = "./supabase/templates"
+
+# Storage Configuration
+[storage]
+# Maximum file upload size (100MB)
+file_size_limit = 104857600
+# Allowed file types for uploads
+allowed_mime_types = [
+    "image/jpeg",
+    "image/png", 
+    "image/gif",
+    "image/webp",
+    "application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "text/plain",
+    "text/csv"
+]
+
+# API Configuration
+[api]
+# API URL (will be set automatically)
+url = "http://localhost:54321"
+# Enable real-time subscriptions
+enable_realtime = true
+# Rate limiting
+max_rows = 1000
+
+# Edge Functions Configuration
+[functions]
+# Verify JWT tokens
+verify_jwt = true
+
+# Development Settings
+[development]
+# Enable local development mode
+local_development = true
+# Database reset on schema changes
+reset_db_on_schema_change = false
+
+# Production Settings
+[production]
+# Enable SSL
+ssl_enforce = true
+# Connection pooling
+db_pool_size = 15
+# Enable WAL mode for better performance
+wal_mode = true
+
+# =============================================
+# ENVIRONMENT-SPECIFIC CONFIGURATIONS
+# =============================================
+
+[environments.local]
+api_url = "http://localhost:54321"
+anon_key = "your-local-anon-key"
+service_role_key = "your-local-service-role-key"
+
+[environments.staging]
+api_url = "https://your-project.supabase.co"
+anon_key = "your-staging-anon-key"
+service_role_key = "your-staging-service-role-key"
+
+[environments.production]
+api_url = "https://your-project.supabase.co"
+anon_key = "your-production-anon-key"
+service_role_key = "your-production-service-role-key"
+
+# =============================================
+# BUCKET CONFIGURATIONS
+# =============================================
+
+[storage.buckets.student-photos]
+public = false
+file_size_limit = 5242880  # 5MB
+allowed_mime_types = ["image/jpeg", "image/png", "image/webp"]
+
+[storage.buckets.documents]
+public = false
+file_size_limit = 52428800  # 50MB
+allowed_mime_types = [
+    "application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+]
+
+[storage.buckets.transcripts]
+public = false
+file_size_limit = 10485760  # 10MB
+allowed_mime_types = ["application/pdf"]
+
+[storage.buckets.id-cards]
+public = false
+file_size_limit = 5242880  # 5MB
+allowed_mime_types = ["application/pdf", "image/png", "image/jpeg"]
+
+# =============================================
+# REAL-TIME CONFIGURATION
+# =============================================
+
+[realtime]
+# Enable real-time for specific tables
+enabled_tables = [
+    "notifications",
+    "enrollments", 
+    "attendance",
+    "assignment_submissions",
+    "students",
+    "faculty",
+    "course_offerings"
+]
+
+# Real-time policies
+[realtime.policies]
+# Allow users to subscribe to their own records
+enable_self_subscription = true
+# Allow admins to subscribe to all records
+enable_admin_subscription = true
