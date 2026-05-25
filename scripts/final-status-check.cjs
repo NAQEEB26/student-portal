@@ -4,11 +4,14 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    anonKey: '<YOUR_SUPABASE_ANON_KEY>',
-    serviceKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class ProjectStatusAnalyzer {
@@ -130,18 +133,17 @@ class ProjectStatusAnalyzer {
         const fs = require('fs');
         const path = require('path');
 
-        // Check Supabase configuration
+        // Check environment configuration
         try {
-            const configContent = fs.readFileSync(path.join(__dirname, '..', 'supabase_details.txt'), 'utf8');
-            const hasProjectId = configContent.includes('your-project-id');
-            const hasKeys = configContent.includes('anon key') && configContent.includes('secret key');
+            const envExists = fs.existsSync(path.join(__dirname, '..', '.env'));
+            const envExampleExists = fs.existsSync(path.join(__dirname, '..', '.env.example'));
 
             console.log('🔑 Supabase Configuration:');
-            console.log(`   - Project ID: ${hasProjectId ? '✅' : '❌'}`);
-            console.log(`   - API Keys: ${hasKeys ? '✅' : '❌'}`);
-            console.log(`   - URL: ✅ https://your-project-id.supabase.co`);
+            console.log(`   - .env file: ${envExists ? '✅ Present' : '❌ Missing (copy from .env.example)'}`);
+            console.log(`   - .env.example: ${envExampleExists ? '✅' : '❌'}`);
+            console.log(`   - URL: ${process.env.SUPABASE_URL ? '✅ ' + process.env.SUPABASE_URL : '❌ Not set'}`);
         } catch (err) {
-            console.log('❌ Configuration file missing');
+            console.log('❌ Configuration check failed');
         }
 
         // Check test configuration

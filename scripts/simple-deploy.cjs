@@ -6,10 +6,12 @@
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    serviceRoleKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.serviceRoleKey);

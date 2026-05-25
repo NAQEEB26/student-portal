@@ -54,12 +54,12 @@ class ProductionDeploymentValidator {
                 integrationContent.includes('loadUserProfile');
         });
 
-        // Supabase credentials security
+        // Supabase credentials security - check .env.example exists
         await this.check('Supabase credentials properly configured', () => {
-            const supabaseDetails = fs.readFileSync(path.join(__dirname, '../supabase_details.txt'), 'utf8');
-            return supabaseDetails.includes('your-project-id') &&
-                supabaseDetails.includes('anon') &&
-                supabaseDetails.includes('secret key');
+            const envExample = fs.readFileSync(path.join(__dirname, '../.env.example'), 'utf8');
+            return envExample.includes('SUPABASE_URL') &&
+                envExample.includes('SUPABASE_ANON_KEY') &&
+                envExample.includes('SUPABASE_SERVICE_ROLE_KEY');
         });
 
         // Edge Functions security
@@ -143,7 +143,7 @@ class ProductionDeploymentValidator {
         await this.check('Supabase client properly initialized', () => {
             const supabaseContent = fs.readFileSync(path.join(__dirname, '../frontend/assets/js/supabase-integration.js'), 'utf8');
             return supabaseContent.includes('createClient') &&
-                supabaseContent.includes('your-project-id.supabase.co') &&
+                supabaseContent.includes('SUPABASE_URL') &&
                 supabaseContent.includes('SupabaseService');
         });
     }

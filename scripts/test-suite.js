@@ -6,12 +6,17 @@
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
-// Test Configuration
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
+
+// Test Configuration - loaded from environment variables
 const TEST_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    anonKey: '<YOUR_SUPABASE_ANON_KEY>',
-    serviceRoleKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class StudentPortalTester {

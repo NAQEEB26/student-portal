@@ -6,11 +6,16 @@
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
-// Configuration from your Supabase project
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
+
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    serviceRoleKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.serviceRoleKey);

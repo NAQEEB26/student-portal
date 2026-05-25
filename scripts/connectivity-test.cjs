@@ -4,13 +4,15 @@
  */
 
 const https = require('https');
+const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
-// Configuration from supabase_details.txt
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    anonKey: '<YOUR_SUPABASE_ANON_KEY>',
-    serviceKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class ConnectivityTester {
@@ -35,7 +37,8 @@ class ConnectivityTester {
             console.log('\n🌐 Testing DNS Resolution...');
 
             const dns = require('dns');
-            const hostname = 'your-project-id.supabase.co';
+            const url = new URL(SUPABASE_CONFIG.url);
+            const hostname = url.hostname;
 
             dns.lookup(hostname, (err, address, family) => {
                 if (err) {

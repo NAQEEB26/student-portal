@@ -1,24 +1,40 @@
-# 🚀 STUDENT PORTAL - PRODUCTION SETUP GUIDE
+# 🚀 STUDENT PORTAL - SETUP GUIDE
 
-## ⚠️ CRITICAL: MANUAL SCHEMA DEPLOYMENT REQUIRED
+## Prerequisites
 
-### Current Status:
-- ✅ **Supabase Project**: Active and accessible
-- ✅ **API Connectivity**: Working perfectly
-- ✅ **Storage Buckets**: Created successfully
-- ❌ **Database Tables**: **NEED MANUAL CREATION**
+- Node.js >= 16.0.0
+- npm >= 8.0.0
+- A [Supabase](https://supabase.com) account (free tier works)
 
 ---
 
-## 🔧 IMMEDIATE SETUP STEPS
+## 🔧 SETUP STEPS
 
-### **STEP 1: Deploy Database Schema**
+### **STEP 1: Clone and Install**
+
+```bash
+git clone https://github.com/NAQEEB26/student-portal.git
+cd student-portal
+npm install
+```
+
+### **STEP 2: Configure Environment**
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and fill in your Supabase credentials:
+- `SUPABASE_URL` — Your project URL (from Supabase dashboard > Settings > API)
+- `SUPABASE_ANON_KEY` — Your anon/public key
+- `SUPABASE_SERVICE_ROLE_KEY` — Your service role key (keep secret!)
+
+### **STEP 3: Deploy Database Schema**
 
 1. **Open Supabase Dashboard:**
-   - Go to: https://supabase.com/dashboard/project/pamkllweipcafpylvsdf
-   - Navigate to: **SQL Editor**
+   - Go to your project's **SQL Editor**
 
-2. **Copy and Execute Schema:**
+2. **Execute Schema:**
    - Open file: `supabase/schema.sql`
    - Copy the ENTIRE contents
    - Paste into Supabase SQL Editor
@@ -26,123 +42,67 @@
 
 3. **Deploy RLS Policies:**
    - Open file: `supabase/rls-policies.sql`
-   - Copy the ENTIRE contents  
-   - Paste into Supabase SQL Editor
-   - Click **"Run"**
+   - Copy and run in SQL Editor
 
 4. **Add Seed Data (Optional):**
    - Open file: `supabase/seed.sql`
-   - Copy the ENTIRE contents
-   - Paste into Supabase SQL Editor
-   - Click **"Run"**
+   - Copy and run in SQL Editor
 
 ---
 
-## 🎯 AUTOMATED VERIFICATION
+## 🎯 VERIFICATION
 
-After manual schema deployment, run these commands:
+After schema deployment, verify everything works:
 
-### **Test Database Schema:**
-\`\`\`bash
-npm run test
-\`\`\`
+```bash
+# Run the test suite
+npm test
 
-### **Validate Production Readiness:**
-\`\`\`bash
+# Validate production readiness
 npm run validate-production
-\`\`\`
 
-### **Run Simple Tests:**
-\`\`\`bash
+# Run simple tests
 npm run test-simple
-\`\`\`
+```
 
 ---
 
-## 📋 PRODUCTION DEPLOYMENT CHECKLIST
+## 📋 PROJECT STRUCTURE
 
-### ✅ **Completed:**
-- [x] Supabase project setup and verification
-- [x] API connectivity testing  
-- [x] Storage bucket configuration
-- [x] Dependencies installation
-- [x] Test suite creation
-- [x] Production validation scripts
-
-### 🔄 **In Progress:**
-- [ ] **Database schema deployment** (MANUAL STEP REQUIRED)
-- [ ] RLS policies implementation
-- [ ] Seed data insertion
-
-### 📅 **Next Steps:**
-- [ ] End-to-end testing
-- [ ] Frontend-backend integration verification
-- [ ] Performance optimization
-- [ ] Production launch
+```
+frontend/
+├── index.html          # Landing page
+├── pages/              # Application pages (login, dashboard, etc.)
+├── assets/
+│   ├── css/            # Stylesheets
+│   └── js/             # JavaScript modules
+scripts/                # Backend/deployment scripts
+supabase/
+├── schema.sql          # Database schema
+├── rls-policies.sql    # Row Level Security policies
+├── seed.sql            # Sample data
+└── functions/          # Edge functions
+```
 
 ---
 
-## 🛠️ TECHNICAL SUMMARY
+## 🚀 RUNNING LOCALLY
 
-### **Project Configuration:**
-- **Project ID:** pamkllweipcafpylvsdf
-- **URL:** https://pamkllweipcafpylvsdf.supabase.co
-- **Status:** ✅ ACTIVE
-- **API:** ✅ RESPONDING
-- **Storage:** ✅ CONFIGURED
-
-### **Database Status:**
-- **Connection:** ✅ WORKING
-- **Tables:** ❌ NOT CREATED (Manual deployment required)
-- **RLS:** ❌ PENDING
-- **Seed Data:** ❌ PENDING
-
-### **Frontend Status:**
-- **Pages:** ✅ CREATED (8 modules)
-- **Integration:** ✅ CONFIGURED
-- **Scripts:** ✅ READY
+```bash
+# Serve the frontend with any static file server
+npx live-server frontend/
+```
 
 ---
 
-## 🚨 WHY MANUAL DEPLOYMENT?
+## 📞 TROUBLESHOOTING
 
-**Senior Engineering Best Practice:**
-1. **Security**: Manual schema review prevents unauthorized database modifications
-2. **Control**: Ensures schema accuracy and proper relationships
-3. **Audit Trail**: Manual deployment provides clear documentation
-4. **Production Safety**: Prevents automated scripts from corrupting production data
-
----
-
-## 🎉 AFTER SCHEMA DEPLOYMENT
-
-Once you've manually deployed the schema:
-
-1. **Verify Everything:**
-   \`\`\`bash
-   npm run test
-   \`\`\`
-
-2. **Launch Application:**
-   \`\`\`bash
-   npm start
-   \`\`\`
-
-3. **Access System:**
-   - Open: `frontend/index.html`
-   - Login with test credentials
-   - Verify all 21 modules
+If you encounter issues:
+1. Verify your `.env` file has correct credentials
+2. Check Supabase dashboard for error messages
+3. Ensure schema deployment was successful
+4. Run connectivity tests: `node scripts/connectivity-test.cjs`
 
 ---
 
-## 📞 SUPPORT
-
-**If you encounter issues:**
-1. Check Supabase dashboard for error messages
-2. Verify schema deployment was successful
-3. Run connectivity tests: `node scripts/connectivity-test.cjs`
-4. Review deployment logs in `deployment-log.txt`
-
----
-
-**🎯 READY FOR PRODUCTION AFTER MANUAL SCHEMA DEPLOYMENT!**
+**🎯 READY FOR USE AFTER SCHEMA DEPLOYMENT!**

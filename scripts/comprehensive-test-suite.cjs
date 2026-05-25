@@ -7,12 +7,13 @@ const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
-// Test Configuration
+// Test Configuration - loaded from environment variables
 const TEST_CONFIG = {
     url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
-    anonKey: '<YOUR_SUPABASE_ANON_KEY>',
-    serviceRoleKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class StudentPortalTester {
