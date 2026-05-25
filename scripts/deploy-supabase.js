@@ -9,8 +9,8 @@ import path from 'path';
 
 // Configuration from your Supabase project
 const SUPABASE_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    serviceRoleKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
+    serviceRoleKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
 };
 
 const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.serviceRoleKey);

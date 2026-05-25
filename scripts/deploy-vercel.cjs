@@ -98,10 +98,10 @@ class VercelDeployer {
         console.log('   4. Add these variables:');
         console.log('');
         console.log('   Key: VITE_SUPABASE_URL');
-        console.log('   Value: https://pamkllweipcafpylvsdf.supabase.co');
+        console.log('   Value: https://your-project-id.supabase.co');
         console.log('');
         console.log('   Key: VITE_SUPABASE_ANON_KEY');
-        console.log('   Value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA');
+        console.log('   Value: <YOUR_SUPABASE_ANON_KEY>');
         console.log('');
         console.log('   ✅ Environment variables are pre-configured in vercel.json');
     }

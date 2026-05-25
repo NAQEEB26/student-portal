@@ -57,7 +57,7 @@ class ProductionDeploymentValidator {
         // Supabase credentials security
         await this.check('Supabase credentials properly configured', () => {
             const supabaseDetails = fs.readFileSync(path.join(__dirname, '../supabase_details.txt'), 'utf8');
-            return supabaseDetails.includes('pamkllweipcafpylvsdf') &&
+            return supabaseDetails.includes('your-project-id') &&
                 supabaseDetails.includes('anon') &&
                 supabaseDetails.includes('secret key');
         });
@@ -143,7 +143,7 @@ class ProductionDeploymentValidator {
         await this.check('Supabase client properly initialized', () => {
             const supabaseContent = fs.readFileSync(path.join(__dirname, '../frontend/assets/js/supabase-integration.js'), 'utf8');
             return supabaseContent.includes('createClient') &&
-                supabaseContent.includes('pamkllweipcafpylvsdf.supabase.co') &&
+                supabaseContent.includes('your-project-id.supabase.co') &&
                 supabaseContent.includes('SupabaseService');
         });
     }
@@ -338,7 +338,7 @@ class ProductionDeploymentValidator {
             console.log('DEPLOYMENT INSTRUCTIONS:');
             console.log('1. Run: npm run deploy');
             console.log('2. Verify: npm run test');
-            console.log('3. Go Live: Access https://pamkllweipcafpylvsdf.supabase.co');
+            console.log('3. Go Live: Access https://your-project-id.supabase.co');
         } else {
             console.log('⚠️ PRODUCTION VALIDATION FAILED');
             console.log('❌ System requires fixes before production deployment');
@@ -365,7 +365,7 @@ class ProductionDeploymentValidator {
             `Validation Date: ${new Date().toISOString()}`,
             `System: Student Portal Management System`,
             `Backend: Supabase PostgreSQL + Edge Functions`,
-            `Project ID: pamkllweipcafpylvsdf`,
+            `Project ID: your-project-id`,
             `Environment: Production Ready`,
             '',
             'VALIDATION SUMMARY:',
@@ -406,7 +406,7 @@ class ProductionDeploymentValidator {
             lines.push('Next Steps:');
             lines.push('1. Run deployment: npm run deploy');
             lines.push('2. Execute tests: npm run test');
-            lines.push('3. Access system: https://pamkllweipcafpylvsdf.supabase.co');
+            lines.push('3. Access system: https://your-project-id.supabase.co');
             lines.push('4. Monitor performance and logs');
         } else {
             lines.push('❌ REQUIRES FIXES BEFORE DEPLOYMENT');

@@ -6,9 +6,9 @@
 const { createClient } = require('@supabase/supabase-js');
 
 const SUPABASE_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA',
-    serviceKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
+    anonKey: '<YOUR_SUPABASE_ANON_KEY>',
+    serviceKey: '<YOUR_SUPABASE_SERVICE_ROLE_KEY>'
 };
 
 class ProjectStatusAnalyzer {
@@ -21,7 +21,7 @@ class ProjectStatusAnalyzer {
         console.log('🔍 SENIOR ENGINEERING ANALYSIS - STUDENT PORTAL PROJECT');
         console.log('='.repeat(80));
         console.log('Analysis Date:', new Date().toISOString());
-        console.log('Project ID:', 'pamkllweipcafpylvsdf');
+        console.log('Project ID:', 'your-project-id');
         console.log('='.repeat(80));
 
         await this.checkInfrastructure();
@@ -133,13 +133,13 @@ class ProjectStatusAnalyzer {
         // Check Supabase configuration
         try {
             const configContent = fs.readFileSync(path.join(__dirname, '..', 'supabase_details.txt'), 'utf8');
-            const hasProjectId = configContent.includes('pamkllweipcafpylvsdf');
+            const hasProjectId = configContent.includes('your-project-id');
             const hasKeys = configContent.includes('anon key') && configContent.includes('secret key');
 
             console.log('🔑 Supabase Configuration:');
             console.log(`   - Project ID: ${hasProjectId ? '✅' : '❌'}`);
             console.log(`   - API Keys: ${hasKeys ? '✅' : '❌'}`);
-            console.log(`   - URL: ✅ https://pamkllweipcafpylvsdf.supabase.co`);
+            console.log(`   - URL: ✅ https://your-project-id.supabase.co`);
         } catch (err) {
             console.log('❌ Configuration file missing');
         }

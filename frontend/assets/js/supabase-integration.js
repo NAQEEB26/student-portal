@@ -3,11 +3,13 @@
  * Handles all backend communication and data management
  */
 
-// Supabase Configuration
+// Supabase Configuration - loaded from environment config
+// Set these values via window.__ENV__ object (see config.js or your deployment env)
 const SUPABASE_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA',
-    serviceRoleKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: (window.__ENV__ && window.__ENV__.SUPABASE_URL) || '',
+    anonKey: (window.__ENV__ && window.__ENV__.SUPABASE_ANON_KEY) || ''
+    // NOTE: Service role key must NEVER be exposed in frontend code.
+    // It should only be used in server-side Edge Functions.
 };
 
 // Initialize Supabase client
