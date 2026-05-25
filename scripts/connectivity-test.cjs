@@ -4,13 +4,15 @@
  */
 
 const https = require('https');
+const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
-// Configuration from supabase_details.txt
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA',
-    serviceKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class ConnectivityTester {
@@ -35,7 +37,8 @@ class ConnectivityTester {
             console.log('\n🌐 Testing DNS Resolution...');
 
             const dns = require('dns');
-            const hostname = 'pamkllweipcafpylvsdf.supabase.co';
+            const url = new URL(SUPABASE_CONFIG.url);
+            const hostname = url.hostname;
 
             dns.lookup(hostname, (err, address, family) => {
                 if (err) {

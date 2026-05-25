@@ -4,11 +4,14 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
+// Configuration from environment variables
 const SUPABASE_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA',
-    serviceKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class ProjectStatusAnalyzer {
@@ -21,7 +24,7 @@ class ProjectStatusAnalyzer {
         console.log('🔍 SENIOR ENGINEERING ANALYSIS - STUDENT PORTAL PROJECT');
         console.log('='.repeat(80));
         console.log('Analysis Date:', new Date().toISOString());
-        console.log('Project ID:', 'pamkllweipcafpylvsdf');
+        console.log('Project ID:', 'your-project-id');
         console.log('='.repeat(80));
 
         await this.checkInfrastructure();
@@ -130,18 +133,17 @@ class ProjectStatusAnalyzer {
         const fs = require('fs');
         const path = require('path');
 
-        // Check Supabase configuration
+        // Check environment configuration
         try {
-            const configContent = fs.readFileSync(path.join(__dirname, '..', 'supabase_details.txt'), 'utf8');
-            const hasProjectId = configContent.includes('pamkllweipcafpylvsdf');
-            const hasKeys = configContent.includes('anon key') && configContent.includes('secret key');
+            const envExists = fs.existsSync(path.join(__dirname, '..', '.env'));
+            const envExampleExists = fs.existsSync(path.join(__dirname, '..', '.env.example'));
 
             console.log('🔑 Supabase Configuration:');
-            console.log(`   - Project ID: ${hasProjectId ? '✅' : '❌'}`);
-            console.log(`   - API Keys: ${hasKeys ? '✅' : '❌'}`);
-            console.log(`   - URL: ✅ https://pamkllweipcafpylvsdf.supabase.co`);
+            console.log(`   - .env file: ${envExists ? '✅ Present' : '❌ Missing (copy from .env.example)'}`);
+            console.log(`   - .env.example: ${envExampleExists ? '✅' : '❌'}`);
+            console.log(`   - URL: ${process.env.SUPABASE_URL ? '✅ ' + process.env.SUPABASE_URL : '❌ Not set'}`);
         } catch (err) {
-            console.log('❌ Configuration file missing');
+            console.log('❌ Configuration check failed');
         }
 
         // Check test configuration

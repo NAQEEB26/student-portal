@@ -47,7 +47,7 @@ class SimpleTestRunner {
 
             // Test 1.2: Check if Supabase config is present
             await this.test('Supabase configuration exists', () => {
-                return fs.existsSync(path.join(__dirname, '../supabase_details.txt'));
+                return fs.existsSync(path.join(__dirname, '../.env.example'));
             });
 
             // Test 1.3: Validate package.json structure

@@ -7,12 +7,13 @@ const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
-// Test Configuration
+// Test Configuration - loaded from environment variables
 const TEST_CONFIG = {
-    url: 'https://pamkllweipcafpylvsdf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMzI0OTYsImV4cCI6MjA3NzYwODQ5Nn0.z5-L-lTHMREompTZ8b4RdslpoX8XknnCR_-GbxSYHZA',
-    serviceRoleKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhbWtsbHdlaXBjYWZweWx2c2RmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjAzMjQ5NiwiZXhwIjoyMDc3NjA4NDk2fQ.rtj1T3By28PoRJk8pS07IeqG9xQ-QEENfiUKWhVihqg'
+    url: process.env.SUPABASE_URL || 'https://your-project.supabase.co',
+    anonKey: process.env.SUPABASE_ANON_KEY || '',
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };
 
 class StudentPortalTester {
@@ -583,7 +584,7 @@ class StudentPortalTester {
             `Total Duration: ${(totalDuration / 1000).toFixed(2)} seconds`,
             `System: Student Portal Management System`,
             `Backend: Supabase PostgreSQL + Edge Functions`,
-            `Project ID: pamkllweipcafpylvsdf`,
+            `Project ID: your-project-id`,
             '',
             'TEST EXECUTION SUMMARY:',
             '-'.repeat(40),

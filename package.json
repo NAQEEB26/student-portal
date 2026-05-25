@@ -76,18 +76,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/student-portal.git"
+    "url": "git+https://github.com/NAQEEB26/student-portal.git"
   },
   "bugs": {
-    "url": "https://github.com/your-org/student-portal/issues"
+    "url": "https://github.com/NAQEEB26/student-portal/issues"
   },
-  "homepage": "https://github.com/your-org/student-portal#readme",
-  "config": {
-    "supabase": {
-      "url": "https://pamkllweipcafpylvsdf.supabase.co",
-      "project_id": "pamkllweipcafpylvsdf"
-    }
-  },
+  "homepage": "https://github.com/NAQEEB26/student-portal#readme",
   "files": [
     "scripts/",
     "supabase/",

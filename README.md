@@ -72,9 +72,11 @@ A comprehensive web-based student portal built with HTML5, JavaScript, and Supab
 ## 🚀 Quick Start
 
 1. Clone the repository
-2. Open `frontend/index.html` in your browser
-3. Register a new account or login
-4. Explore all features
+2. Run `npm install`
+3. Copy `.env.example` to `.env` and fill in your Supabase credentials
+4. Deploy the database schema (see [SETUP_GUIDE.md](SETUP_GUIDE.md))
+5. Open `frontend/index.html` in your browser
+6. Register a new account or login
 
 ## 📱 Pages & Features
 
