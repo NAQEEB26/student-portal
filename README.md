@@ -1,6 +1,7 @@
-# Student Portal Management System
+# CampusFlow
 
-A comprehensive web-based student portal built with HTML5, JavaScript, and Supabase backend.
+An open-source campus and student management platform built with HTML5, JavaScript, and Supabase.
+Designed for schools, colleges, and universities to manage students, faculty, academics, finance, and campus operations in one modern system.
 
 ## 🚀 Live Demo
 - **Production URL**: Coming soon after Vercel deployment
@@ -122,8 +123,8 @@ vercel --prod
 
 ## 📞 Support
 
-For technical support or questions about the Student Portal system, please refer to the documentation or contact the development team.
+For technical support or questions about CampusFlow, please refer to the documentation or contact the development team.
 
 ---
 
-**Built with ❤️ for educational institutions worldwide**
+**Built with ❤️ for educational institutions worldwide | [CampusFlow](https://github.com/NAQEEB26/CampusFlow)**

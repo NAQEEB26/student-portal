@@ -1,6 +1,6 @@
-# Student Portal - Supabase Backend Setup Guide
+# CampusFlow - Supabase Backend Setup Guide
 
-This guide will help you set up the complete Supabase backend for the Student Portal system.
+This guide will help you set up the complete Supabase backend for CampusFlow.
 
 ## Prerequisites
 

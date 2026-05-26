@@ -1,7 +1,7 @@
 {
-  "name": "student-portal-backend",
+  "name": "campusflow",
   "version": "1.0.0",
-  "description": "Complete Supabase backend for Student Portal Management System",
+  "description": "An open-source campus and student management platform built with HTML5, JavaScript, and Supabase",
   "type": "module",
   "main": "index.js",
   "scripts": {

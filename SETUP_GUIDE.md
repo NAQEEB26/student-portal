@@ -1,4 +1,4 @@
-# 🚀 STUDENT PORTAL - SETUP GUIDE
+# 🚀 CampusFlow - Setup Guide
 
 ## Prerequisites
 

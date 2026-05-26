@@ -1,6 +1,6 @@
-# Contributing to Student Portal
+# Contributing to CampusFlow
 
-Thank you for considering contributing to Student Portal! This document provides guidelines and instructions for contributing.
+Thank you for considering contributing to CampusFlow! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
