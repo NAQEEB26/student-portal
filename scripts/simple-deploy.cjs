@@ -1,5 +1,5 @@
 /**
- * Simple Supabase Schema Deployment for Student Portal
+ * Simple Supabase Schema Deployment for CampusFlow
  * Creates essential tables using basic SQL operations
  */
 
@@ -22,7 +22,7 @@ class SimpleDeployer {
     }
 
     async deploy() {
-        console.log('🚀 Simple Deployment for Student Portal');
+        console.log('🚀 Simple Deployment for CampusFlow');
         console.log('='.repeat(50));
 
         try {

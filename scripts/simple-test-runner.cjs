@@ -1,5 +1,5 @@
 /**
- * Simple Test Runner for Student Portal Backend (CommonJS)
+ * Simple Test Runner for CampusFlow Backend (CommonJS)
  * Tests basic functionality without external dependencies
  */
 
@@ -15,7 +15,7 @@ class SimpleTestRunner {
     }
 
     async run() {
-        console.log('🚀 Starting Student Portal Test Suite...\n');
+        console.log('🚀 Starting CampusFlow Test Suite...\n');
 
         // Test 1: Configuration Validation
         await this.testConfigurationValidation();
@@ -273,7 +273,7 @@ class SimpleTestRunner {
 
     generateReport() {
         console.log('\n' + '='.repeat(80));
-        console.log('STUDENT PORTAL - TEST REPORT');
+        console.log('CAMPUSFLOW - TEST REPORT');
         console.log('='.repeat(80));
         console.log(`Test Date: ${new Date().toISOString()}`);
         console.log(`Total Tests: ${this.totalTests}`);
@@ -309,7 +309,7 @@ class SimpleTestRunner {
     generateReportContent() {
         const lines = [
             '='.repeat(80),
-            'STUDENT PORTAL - SIMPLE TEST REPORT',
+            'CAMPUSFLOW - SIMPLE TEST REPORT',
             '='.repeat(80),
             `Test Date: ${new Date().toISOString()}`,
             `Total Tests: ${this.totalTests}`,

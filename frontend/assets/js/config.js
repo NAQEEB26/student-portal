@@ -1,5 +1,5 @@
 /**
- * Frontend Configuration for Student Portal
+ * Frontend Configuration for CampusFlow
  * 
  * For local development, update the values below with your Supabase project credentials.
  * For production (Vercel), these are injected at build/deploy time via environment variables.

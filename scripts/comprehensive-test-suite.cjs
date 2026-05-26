@@ -1,5 +1,5 @@
 /**
- * Comprehensive Test Suite for Student Portal Backend (CommonJS)
+ * Comprehensive Test Suite for CampusFlow Backend (CommonJS)
  * Tests all modules, use cases, and edge cases for production readiness
  */
 
@@ -28,9 +28,9 @@ class StudentPortalTester {
     }
 
     async runAllTests() {
-        console.log('🚀 Starting Comprehensive Student Portal Test Suite...\n');
+        console.log('🚀 Starting Comprehensive CampusFlow Test Suite...\n');
         console.log('='.repeat(80));
-        console.log('STUDENT PORTAL - COMPREHENSIVE TEST EXECUTION');
+        console.log('CAMPUSFLOW - COMPREHENSIVE TEST EXECUTION');
         console.log('='.repeat(80));
         console.log(`Test Start Time: ${new Date().toISOString()}`);
         console.log(`Supabase URL: ${TEST_CONFIG.url}`);
@@ -578,11 +578,11 @@ class StudentPortalTester {
     generateDetailedReportContent(totalDuration) {
         const lines = [
             '='.repeat(80),
-            'STUDENT PORTAL - COMPREHENSIVE TEST EXECUTION REPORT',
+            'CAMPUSFLOW - COMPREHENSIVE TEST EXECUTION REPORT',
             '='.repeat(80),
             `Test Date: ${new Date().toISOString()}`,
             `Total Duration: ${(totalDuration / 1000).toFixed(2)} seconds`,
-            `System: Student Portal Management System`,
+            `System: CampusFlow`,
             `Backend: Supabase PostgreSQL + Edge Functions`,
             `Project ID: your-project-id`,
             '',

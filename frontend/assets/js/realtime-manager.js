@@ -1,5 +1,5 @@
 /**
- * Real-time Features and Performance Optimization for Student Portal
+ * Real-time Features and Performance Optimization for CampusFlow
  * Handles real-time subscriptions, notifications, triggers, and performance monitoring
  */
 

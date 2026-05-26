@@ -1,11 +1,11 @@
 /**
- * Production-Ready Frontend Integration for Student Portal
+ * Production-Ready Frontend Integration for CampusFlow
  * Connects all 21 modules with Supabase backend with proper error handling and loading states
  */
 
 // Initialize Supabase connection on page load
 document.addEventListener('DOMContentLoaded', async function () {
-    console.log('🚀 Student Portal Frontend Loading...');
+    console.log('🚀 CampusFlow Frontend Loading...');
 
     // Initialize Supabase service
     await initializeSupabaseIntegration();
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Initialize all modules
     await initializeAllModules();
 
-    console.log('✅ Student Portal Frontend Ready');
+    console.log('✅ CampusFlow Frontend Ready');
 });
 
 // Global state management

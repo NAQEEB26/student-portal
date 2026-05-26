@@ -3,8 +3,8 @@
 # =============================================
 
 # Project Details
-project_id = "student-portal-2024"
-name = "Student Portal"
+project_id = "campusflow-2024"
+name = "CampusFlow"
 db_password = "your-secure-database-password"
 
 # Database Configuration

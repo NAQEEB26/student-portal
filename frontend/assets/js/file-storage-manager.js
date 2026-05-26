@@ -1,5 +1,5 @@
 /**
- * File Storage and Media Management System for Student Portal
+ * File Storage and Media Management System for CampusFlow
  * Handles secure file uploads, downloads, and management using Supabase Storage
  */
 

@@ -2,14 +2,14 @@
 
 /**
  * Vercel Deployment Automation Script
- * Deploys Student Portal to Vercel with proper configuration
+ * Deploys CampusFlow to Vercel with proper configuration
  */
 
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 STUDENT PORTAL - VERCEL DEPLOYMENT AUTOMATION');
+console.log('🚀 CAMPUSFLOW - VERCEL DEPLOYMENT AUTOMATION');
 console.log('='.repeat(60));
 console.log(`Deployment Date: ${new Date().toISOString()}`);
 console.log('='.repeat(60));
@@ -169,8 +169,8 @@ class VercelDeployer {
         console.log('   ✅ Security: RLS Policies Active');
         console.log('');
         console.log('   🔗 Your app will be available at:');
-        console.log('   - Preview: https://student-portal-[hash].vercel.app');
-        console.log('   - Production: https://student-portal-[your-domain].vercel.app');
+        console.log('   - Preview: https://campusflow-[hash].vercel.app');
+        console.log('   - Production: https://campusflow-[your-domain].vercel.app');
         console.log('');
         console.log('   📱 Test all features after deployment:');
         console.log('   - User registration and login');

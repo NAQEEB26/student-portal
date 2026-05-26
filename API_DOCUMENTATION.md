@@ -1,6 +1,6 @@
-# Student Portal API Documentation
+# CampusFlow API Documentation
 
-This document provides comprehensive API documentation for the Student Portal Supabase backend.
+This document provides comprehensive API documentation for the CampusFlow Supabase backend.
 
 ## Base URL
 

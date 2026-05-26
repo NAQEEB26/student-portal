@@ -105,7 +105,7 @@ const IDCardGenerator = {
                             <i class="fas fa-graduation-cap fa-3x text-primary"></i>
                         </div>
                         <div class="institution-info">
-                            <h5 class="mb-0 fw-bold">Student Portal</h5>
+                            <h5 class="mb-0 fw-bold">CampusFlow</h5>
                             <p class="mb-0 small">Educational Institution</p>
                             <p class="mb-0 small text-muted">Student Identity Card</p>
                         </div>
@@ -327,7 +327,7 @@ const IDCardGenerator = {
 
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 20px Arial';
-        ctx.fillText('Student Portal - ID Card', 20, 35);
+        ctx.fillText('CampusFlow - ID Card', 20, 35);
 
         ctx.fillStyle = '#000000';
         ctx.font = '16px Arial';
