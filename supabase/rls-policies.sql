@@ -1,7 +1,7 @@
 -- =============================================
 -- ROW LEVEL SECURITY (RLS) POLICIES
 -- =============================================
--- Comprehensive security policies for the Student Portal
+-- Comprehensive security policies for the CampusFlow
 
 -- Enable RLS on all tables
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;

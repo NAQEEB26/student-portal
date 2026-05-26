@@ -1,5 +1,5 @@
 /**
- * Comprehensive Test Suite for Student Portal Backend
+ * Comprehensive Test Suite for CampusFlow Backend
  * Tests all modules, use cases, and edge cases for production readiness
  */
 
@@ -680,7 +680,7 @@ class StudentPortalTester {
 
         const report = [
             '='.repeat(80),
-            'STUDENT PORTAL - COMPREHENSIVE TEST REPORT',
+            'CAMPUSFLOW - COMPREHENSIVE TEST REPORT',
             '='.repeat(80),
             `Test Date: ${new Date().toISOString()}`,
             `Environment: ${TEST_CONFIG.url}`,
@@ -770,7 +770,7 @@ async function main() {
     const success = await tester.runAllTests();
 
     if (success) {
-        console.log('\n✅ Student Portal Backend is ready for production deployment!');
+        console.log('\n✅ CampusFlow Backend is ready for production deployment!');
         process.exit(0);
     } else {
         console.log('\n❌ Please fix the failing tests before production deployment.');

@@ -13,8 +13,8 @@
 ### **STEP 1: Clone and Install**
 
 ```bash
-git clone https://github.com/NAQEEB26/student-portal.git
-cd student-portal
+git clone https://github.com/NAQEEB26/campusflow.git
+cd campusflow
 npm install
 ```
 

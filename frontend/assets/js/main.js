@@ -1,5 +1,5 @@
 // ================================
-// STUDENT PORTAL - MAIN JAVASCRIPT
+// CAMPUSFLOW - MAIN JAVASCRIPT
 // ================================
 
 // Global Variables
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    console.log('Student Portal initialized successfully');
+    console.log('CampusFlow initialized successfully');
 });
 
 // Export for use in other files

@@ -1,5 +1,5 @@
 /**
- * Supabase Deployment Script for Student Portal
+ * Supabase Deployment Script for CampusFlow
  * This script sets up the complete database schema, RLS policies, Edge Functions, and storage
  */
 
@@ -326,7 +326,7 @@ class SupabaseDeployer {
         const reportPath = path.join(process.cwd(), 'deployment-report.txt');
         const report = [
             '='.repeat(80),
-            'STUDENT PORTAL - SUPABASE DEPLOYMENT REPORT',
+            'CAMPUSFLOW - SUPABASE DEPLOYMENT REPORT',
             '='.repeat(80),
             `Deployment Date: ${new Date().toISOString()}`,
             `Project URL: ${SUPABASE_CONFIG.url}`,

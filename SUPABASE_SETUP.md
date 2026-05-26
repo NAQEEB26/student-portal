@@ -22,7 +22,7 @@ npm install -g supabase
 2. Click "New Project"
 3. Choose your organization
 4. Fill in project details:
-   - **Name**: Student Portal
+   - **Name**: CampusFlow
    - **Database Password**: Choose a strong password
    - **Region**: Select closest to your users
 
@@ -30,7 +30,7 @@ npm install -g supabase
 
 ```bash
 # Navigate to your project directory
-cd Student_Portal
+cd CampusFlow
 
 # Initialize Supabase
 supabase init

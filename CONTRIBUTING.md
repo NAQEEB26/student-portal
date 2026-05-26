@@ -19,7 +19,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/student-portal.git`
+2. Clone your fork: `git clone https://github.com/your-username/campusflow.git`
 3. Create a feature branch: `git checkout -b feature/your-feature-name`
 4. Make your changes
 5. Push to your fork: `git push origin feature/your-feature-name`
@@ -29,7 +29,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ### Reporting Bugs
 
-- Use the [GitHub Issues](https://github.com/NAQEEB26/student-portal/issues) page
+- Use the [GitHub Issues](https://github.com/NAQEEB26/campusflow/issues) page
 - Check if the issue already exists before creating a new one
 - Include steps to reproduce, expected behavior, and actual behavior
 - Include screenshots if applicable
@@ -60,8 +60,8 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ```bash
 # Clone the repository
-git clone https://github.com/NAQEEB26/student-portal.git
-cd student-portal
+git clone https://github.com/NAQEEB26/campusflow.git
+cd campusflow
 
 # Install dependencies
 npm install
@@ -154,7 +154,7 @@ When reporting issues, please include:
 
 ## Questions?
 
-Feel free to open a [Discussion](https://github.com/NAQEEB26/student-portal/discussions) for questions that aren't bugs or feature requests.
+Feel free to open a [Discussion](https://github.com/NAQEEB26/campusflow/discussions) for questions that aren't bugs or feature requests.
 
 ---
 

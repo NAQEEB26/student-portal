@@ -1,5 +1,5 @@
 /**
- * Supabase Deployment Script for Student Portal (CommonJS)
+ * Supabase Deployment Script for CampusFlow (CommonJS)
  * This script sets up the complete database schema, RLS policies, and storage
  */
 
@@ -41,7 +41,7 @@ class SupabaseDeployer {
     }
 
     async deploy() {
-        console.log('🚀 Starting Supabase Deployment for Student Portal');
+        console.log('🚀 Starting Supabase Deployment for CampusFlow');
         console.log('='.repeat(70));
 
         try {

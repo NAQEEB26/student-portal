@@ -1,7 +1,7 @@
 -- =============================================
--- STUDENT PORTAL - SUPABASE DATABASE SCHEMA
+-- CAMPUSFLOW - SUPABASE DATABASE SCHEMA
 -- =============================================
--- Complete database schema for Student Portal with Supabase
+-- Complete database schema for CampusFlow with Supabase
 -- Includes all tables, relationships, RLS policies, and functions
 
 -- Enable necessary extensions
@@ -622,5 +622,5 @@ INSERT INTO system_settings (setting_key, setting_value, description, is_public)
 ('late_enrollment_fee', '50.00', 'Late enrollment fee amount', true),
 ('id_card_validity_years', '4', 'ID card validity in years', true);
 
--- This completes the comprehensive database schema for the Student Portal
+-- This completes the comprehensive database schema for the CampusFlow
 -- Ready for Row Level Security policies and Edge Functions implementation

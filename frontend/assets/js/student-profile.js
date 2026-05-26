@@ -131,7 +131,7 @@ class StudentProfile {
         this.updateElement('academic-gpa', 'textContent', student.gpa.toFixed(2));
 
         // Update page title
-        document.title = `${student.name} - Student Portal`;
+        document.title = `${student.name} - CampusFlow`;
     }
 
     loadAcademicPerformance(student) {

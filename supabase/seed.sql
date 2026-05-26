@@ -1,5 +1,5 @@
 -- =============================================
--- SAMPLE DATA FOR STUDENT PORTAL
+-- SAMPLE DATA FOR CAMPUSFLOW
 -- =============================================
 -- This file contains sample data for testing and development
 

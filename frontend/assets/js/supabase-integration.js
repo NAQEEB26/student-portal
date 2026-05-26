@@ -1,5 +1,5 @@
 /**
- * Supabase Integration for Student Portal
+ * Supabase Integration for CampusFlow
  * Handles all backend communication and data management
  */
 
